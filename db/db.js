@@ -55,5 +55,6 @@ async function testConnection() {
 // Export the database connection and any related functions
 module.exports = {
   sequelize,
+  Employee,
   testConnection
 };
