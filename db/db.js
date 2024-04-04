@@ -1,4 +1,5 @@
 const { Sequelize, DataTypes } = require('sequelize');
+require('dotenv').config();
 
 // Create a new Sequelize instance
 const sequelize = new Sequelize('sample_db', 'postgres', 'rootroot', {
