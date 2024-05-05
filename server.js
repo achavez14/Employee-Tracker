@@ -1,6 +1,5 @@
 const express = require('express');
 const { sequelize } = require('./db'); // Import your Sequelize instance
-const Employee = require('./db/Employee'); // Import your Sequelize Employee model
 
 const app = express();
 
