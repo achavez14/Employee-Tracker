@@ -41,7 +41,6 @@ function mainMenu() {
 
           break;
         case 'Add employee':
-          // Implement logic to add an employee
           inquirer.prompt([
             {
               type: 'input',
@@ -55,34 +54,31 @@ function mainMenu() {
             },
             {
               type: 'input',
-              name: 'jobTitle',
-              message: 'Enter the job title of the employee:',
+              name: 'role_id',
+              message: 'Enter the role ID of the employee:',
             },
             {
               type: 'input',
-              name: 'department',
-              message: 'Enter the department of the employee:',
+              name: 'manager_id',
+              message: 'Enter the manager ID of the employee (if applicable):',
             },
-            {
-              type: 'input',
-              name: 'salary',
-              message: 'Enter the salary of the employee:',
-            },
-          ])
-            .then((employeeData) => {
-              const insertQuery = `INSERT INTO Employee (first_name, last_name, role_id, manager_id) VALUES ($1, $2, $3, $4)`;
-              pool.query(insertQuery, [employeeData.firstName, employeeData.lastName, employeeData.role_id, employeeData.manager_id], (error, result) => {
-                if (error) {
-                  console.error('Error adding employee:', error);
-                } else {
-                  console.log('Employee added successfully!');
-                }
-                mainMenu(); // Return to main menu
-              });
+          ]).then((employeeData) => {
+            // Convert manager_id to integer or set to null if not applicable
+            const managerId = employeeData.manager_id.trim().toLowerCase() === 'n/a' ? null : parseInt(employeeData.manager_id);
+
+            const insertQuery = `INSERT INTO Employee (first_name, last_name, role_id, manager_id) VALUES ($1, $2, $3, $4)`;
+            pool.query(insertQuery, [employeeData.firstName, employeeData.lastName, employeeData.role_id, managerId], (error, result) => {
+              if (error) {
+                console.error('Error adding employee:', error);
+              } else {
+                console.log('Employee added successfully!');
+              }
+              mainMenu(); // Return to the main menu
             });
+          });
+          break;
 
         case 'Update employee role':
-          // Prompt the user for employee ID and new role details
           inquirer.prompt([
             {
               type: 'input',
@@ -95,10 +91,18 @@ function mainMenu() {
               name: 'newRoleId',
             },
           ]).then((answers) => {
-            // Update the employee record in the database
+            const employeeId = parseInt(answers.employeeId);
+            const newRoleId = parseInt(answers.newRoleId);
+
+            if (isNaN(employeeId) || isNaN(newRoleId)) {
+              console.error('Invalid input. Please enter valid integer values for employee ID and new role ID.');
+              mainMenu();
+              return;
+            }
+
             pool.query(
               'UPDATE Employee SET role_id = $1 WHERE id = $2',
-              [answers.newRoleId, answers.employeeId],
+              [newRoleId, employeeId],
               (err, result) => {
                 if (err) {
                   console.error('Error updating employee role', err);
@@ -110,7 +114,6 @@ function mainMenu() {
             );
           });
           break;
-
         case 'View all roles':
           pool.query('SELECT * FROM Role', (err, result) => {
             if (err) {
@@ -123,7 +126,6 @@ function mainMenu() {
           break;
 
         case 'Add role':
-          // Implement logic to add a role
           inquirer.prompt([
             {
               type: 'input',
@@ -142,8 +144,15 @@ function mainMenu() {
             },
           ])
             .then((roleData) => {
-              console.log('Todo', roleData);
-              mainMenu();
+              const insertQuery = `INSERT INTO Role (title, salary, department_id) VALUES ($1, $2, $3)`;
+              pool.query(insertQuery, [roleData.title, roleData.salary, roleData.departmentId], (error, result) => {
+                if (error) {
+                  console.error('Error adding role:', error);
+                } else {
+                  console.log('Role added successfully!');
+                }
+                mainMenu(); // Return to the main menu
+              });
             });
           break;
         case 'View all departments':
