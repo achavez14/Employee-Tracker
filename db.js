@@ -2,7 +2,7 @@ const { Sequelize, DataTypes } = require('sequelize');
 require('dotenv').config();
 
 // Create a new Sequelize instance
-const sequelize = new Sequelize('sample_db', 'postgres', 'rootroot', {
+const sequelize = new Sequelize('employee_tracker_db', 'postgres', 'rootroot', {
   host: 'localhost',
   dialect: 'postgres'
 });
@@ -39,14 +39,14 @@ async function testConnection() {
       console.log('Models synced with the database.');
   
       // Create a test record for Employee
-      await Employee.create({
-        firstName: 'John',
-        lastName: 'Doe',
-        jobTitle: 'Software Engineer',
-        department: 'Engineering',
-        salary: 80000.00
-      });
-      console.log('Test employee record created successfully.');
+      // await Employee.create({
+      //   firstName: 'John',
+      //   lastName: 'Doe',
+      //   jobTitle: 'Software Engineer',
+      //   department: 'Engineering',
+      //   salary: 80000.00
+      // });
+      // console.log('Test employee record created successfully.');
     } catch (error) {
       console.error('Unable to connect to the database:', error);
     }
