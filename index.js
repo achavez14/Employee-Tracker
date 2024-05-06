@@ -64,11 +64,32 @@ function mainMenu() {
               });
             break;
           
-          case 'Update employee role':
-            // Implement logic to update an employee role
-            // You can prompt the user for employee ID and new role details, then update the employee record in the database
-            // Add your code here
-            break;
+            case 'Update employee role':
+              // Prompt the user for employee ID and new role details
+              inquirer.prompt([
+                  {
+                      type: 'input',
+                      message: 'Enter the employee ID:',
+                      name: 'employeeId',
+                  },
+                  {
+                      type: 'input',
+                      message: 'Enter the new role ID:',
+                      name: 'newRoleId',
+                  }
+              ]).then((answers) => {
+                  // Update the employee record in the database
+                  connection.query(
+                      'UPDATE employees SET role_id = ? WHERE id = ?',
+                      [answers.newRoleId, answers.employeeId],
+                      (err, res) => {
+                          if (err) throw err;
+                          console.log('Employee role updated successfully!');
+                          // Add any additional logic here if needed
+                      }
+                  );
+              });
+              break;
           
           case 'View all roles':
             // Implement logic to view all roles
@@ -118,10 +139,27 @@ function mainMenu() {
             mainMenu(); // Return to main menu
           });
           break;
-        case 'Add department':
-          // Implement logic to add a department
-          // Add your code here
-          break;
+          case 'Add department':
+            // Prompt the user to enter the name of the new department
+            inquirer.prompt([
+                {
+                    type: 'input',
+                    message: 'Enter the name of the new department:',
+                    name: 'departmentName',
+                }
+            ]).then((answer) => {
+                // Insert the new department into the database
+                connection.query(
+                    'INSERT INTO departments (name) VALUES (?)',
+                    [answer.departmentName],
+                    (err, res) => {
+                        if (err) throw err;
+                        console.log('New department added successfully!');
+                        // Add any additional logic here if needed
+                    }
+                );
+            });
+            break;
         case 'Quit':
           console.log('Exiting application');
           sequelize.close(); // Close the database connection
