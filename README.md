@@ -5,7 +5,22 @@ This employee tracker is a command-line application that was developed with Node
 
 ## Screenshots of My Application
 
-## Link to Deployed Application
+- ![Screenshot_1](./assets/images/Screenshot_(1).png)
+- ![Screenshot_2](./assets/images/Screenshot_(2).png)
+- ![Screenshot_3](./assets/images/Screenshot_(3).png)
+- ![Screenshot_4](./assets/images/Screenshot_(4).png)
+- ![Screenshot_5](./assets/images/Screenshot_(5).png)
+- ![Screenshot_6](./assets/images/Screenshot_(6).png)
+- ![Screenshot_7](./assets/images/Screenshot_(7).png)
+- ![Screenshot_8](./assets/images/Screenshot_(8).png)
+- ![Screenshot_9](./assets/images/Screenshot_(9).png)
+- ![Screenshot_10](./assets/images/Screenshot_(10).png)
+- ![Screenshot_11](./assets/images/Screenshot_(11).png)
+- ![Screenshot_12](./assets/images/Screenshot_(12).png)
+- ![Screenshot_13](./assets/images/Screenshot_(13).png)
+
+## Link to Video Walkthrough
+https://drive.google.com/file/d/1DSeKIuewkQaDF6ZyzIaXfbmi2jJnUvSY/view?usp=sharing
 
 ## Table of Contents
 - [Features](#features)
