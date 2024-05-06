@@ -1,5 +1,5 @@
 // Require the db.js file to establish the database connection
-const { sequelize, testConnection } = require('./db');
+const { sequelize, testConnection, Employee } = require('./db');
 
 // Call the testConnection function to test the database connection
 testConnection()
