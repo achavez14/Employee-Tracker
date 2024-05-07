@@ -58,5 +58,4 @@ This project is licensed under ISC license.
 ## Acknowledgements
 - PostgreSQL
 - Express.js
-- fs module
-- npm packages
+- Inquirer
