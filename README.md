@@ -1,7 +1,7 @@
 # Employee-Tracker
 
 ## Description
-This employee tracker is a command-line application that was developed with Node.js, Inquirer and PostgreSQL. It helps business owners plan and organize their operations, enabling them to organize and run th business effectively.
+This employee tracker is a command-line application that was developed with Node.js, Inquirer and PostgreSQL. It helps business owners plan and organize their operations, enabling them to organize and run their business effectively.
 
 ## Screenshots of My Application
 
@@ -32,22 +32,21 @@ https://drive.google.com/file/d/1DSeKIuewkQaDF6ZyzIaXfbmi2jJnUvSY/view?usp=shari
 
 ## Features
 - View all departments, roles and employees
-- Add a department, role or employee
-- Update and employee role
-- Update employee managers
-- View employees by manager
-- View employees by department
-- Delete departments, roles and employees
-- View the total utilized budget of a department
+- Add a department, role and employee
+- Update an employee role
+- Formatted table display
+- Database integration with PostgreSQL
+- Command-Line Interface (CLI)
 
 ## Installation
 - Clone the repository
 - Install dependencies
 - Set up PstgreSQL database and configure connection in .env file
-- Run the application node server.js
+- Run the application node index.js
 
 ## Usage
-- Start the application by running node server.js
+- Open the terminal or command prompt
+- Start the application by running node index.js
 - Follow the prompts to view departments, roles and employees, add new entries and update employee roles
 
 ## Contributing
